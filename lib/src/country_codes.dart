@@ -1,5 +1,15 @@
 const List<Map<String, String>> codes = [
   {
+    "name": "Select Nationality",
+    "code": "SNY",
+    "dial_code": "+00",
+  },
+  {
+    "name": "افغانستان",
+    "code": "AF",
+    "dial_code": "+93",
+  },
+  {
     "name": "افغانستان",
     "code": "AF",
     "dial_code": "+93",

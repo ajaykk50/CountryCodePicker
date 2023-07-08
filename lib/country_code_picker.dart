@@ -171,29 +171,35 @@ class CountryCodePickerState extends State<CountryCodePicker> {
           padding: widget.padding,
           child: Flex(
             direction: Axis.horizontal,
-            mainAxisSize: MainAxisSize.min,
+            mainAxisSize: MainAxisSize.max,
             children: <Widget>[
               if (widget.showFlagMain != null
                   ? widget.showFlagMain!
                   : widget.showFlag)
-                Flexible(
-                  flex: widget.alignLeft ? 0 : 1,
-                  fit: widget.alignLeft ? FlexFit.tight : FlexFit.loose,
-                  child: Container(
-                    clipBehavior: widget.flagDecoration == null
-                        ? Clip.none
-                        : Clip.hardEdge,
-                    decoration: widget.flagDecoration,
-                    margin: widget.alignLeft
-                        ? const EdgeInsets.only(right: 16.0, left: 8.0)
-                        : const EdgeInsets.only(right: 16.0),
-                    child: Image.asset(
-                      selectedItem!.flagUri!,
-                      package: 'country_code_picker',
-                      width: widget.flagWidth,
+                if (selectedItem != null && selectedItem!.flagUri != "")
+                  Flexible(
+                    flex: widget.alignLeft ? 0 : 1,
+                    fit: widget.alignLeft ? FlexFit.tight : FlexFit.loose,
+                    child: Container(
+                      clipBehavior: widget.flagDecoration == null
+                          ? Clip.none
+                          : Clip.hardEdge,
+                      decoration: widget.flagDecoration,
+                      margin: widget.alignLeft
+                          ? const EdgeInsets.only(right: 16.0, left: 8.0)
+                          : const EdgeInsets.only(right: 16.0),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(50.0),
+                        child: Image.asset(
+                          selectedItem!.flagUri!,
+                          package: 'country_code_picker',
+                          width: 30.0,
+                          height: 30.0,
+                          fit: BoxFit.fill,
+                        ),
+                      ),
                     ),
                   ),
-                ),
               if (!widget.hideMainText)
                 Flexible(
                   fit: widget.alignLeft ? FlexFit.tight : FlexFit.loose,

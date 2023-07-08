@@ -150,10 +150,15 @@ class _SelectionDialogState extends State<SelectionDialog> {
                 decoration: widget.flagDecoration,
                 clipBehavior:
                     widget.flagDecoration == null ? Clip.none : Clip.hardEdge,
-                child: Image.asset(
-                  e.flagUri!,
-                  package: 'country_code_picker',
-                  width: widget.flagWidth,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(50.0),
+                  child: Image.asset(
+                    e.flagUri!,
+                    package: 'country_code_picker',
+                    width: 30.0,
+                    height: 30.0,
+                    fit: BoxFit.fill,
+                  ),
                 ),
               ),
             ),
